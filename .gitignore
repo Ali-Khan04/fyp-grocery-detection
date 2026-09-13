@@ -1,0 +1,56 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# --------------------------------------------------
+# Datasets
+# --------------------------------------------------
+dataset/
+filtered_dataset/
+filtered_dataset_with_negatives/
+final_evaluation/
+person_nagtaive_background/
+unlabeled/
+
+# --------------------------------------------------
+# Trained models / model exports
+# --------------------------------------------------
+*.pt
+*.onnx
+*.engine
+
+weights/
+new-models/
+ncnn-models/
+new-ncnn-models/
+
+# --------------------------------------------------
+# Ultralytics generated output
+# --------------------------------------------------
+runs/
+results/
+
+# --------------------------------------------------
+# Raspberry Pi transfer/testing files
+# --------------------------------------------------
+pi-test/
+
+# --------------------------------------------------
+# Archives
+# --------------------------------------------------
+*.zip
+*.tar.gz
+
+# --------------------------------------------------
+# Dataset caches
+# --------------------------------------------------
+*.cache
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
