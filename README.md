@@ -1,4 +1,21 @@
-# Grocery Item Detection Benchmark: YOLOv8n vs YOLO11n
+Computer vision pipeline for the autonomous retail robot.
+
+## Directory Structure
+
+- `calibration/` - Shelf slot calibration and YOLO slot detection.
+- `datasets/` - Training and testing datasets (excluded from Git).
+- `models/` - Base models and exported model formats (excluded from Git).
+- `scripts/` - Dataset preparation, training and evaluation scripts.
+- `evaluation/` - Training runs, evaluation results and test outputs (excluded from Git).
+
+## Environment
+
+The Python virtual environment is maintained at the repository root.
+
+Activate it from Git Bash:
+
+````bash
+source .venv/Scripts/activate
 
 Object detection and edge-deployment comparison of YOLOv8n and YOLO11n for an autonomous retail robot.
 
@@ -26,7 +43,7 @@ Python 3.12+ is recommended.
 
 ```bash
 python -m venv .venv
-```
+````
 
 Activate the environment.
 
@@ -137,22 +154,22 @@ For final deployment, the trained models are exported to **NCNN**, which provide
 
 Training was performed locally using:
 
-| Component | Configuration |
-|---|---|
-| GPU | NVIDIA GeForce RTX 4060 8 GB |
-| Training Framework | Ultralytics |
-| PyTorch | 2.14.0 |
-| CUDA Runtime | CUDA 13.0 |
-| Training Image Size | 640 x 640 |
+| Component           | Configuration                |
+| ------------------- | ---------------------------- |
+| GPU                 | NVIDIA GeForce RTX 4060 8 GB |
+| Training Framework  | Ultralytics                  |
+| PyTorch             | 2.14.0                       |
+| CUDA Runtime        | CUDA 13.0                    |
+| Training Image Size | 640 x 640                    |
 
 Edge deployment benchmarking was performed on:
 
-| Component | Configuration |
-|---|---|
-| Device | Raspberry Pi 5 |
-| RAM | 8 GB |
-| Inference Device | CPU |
-| Optimized Backend | NCNN |
+| Component         | Configuration  |
+| ----------------- | -------------- |
+| Device            | Raspberry Pi 5 |
+| RAM               | 8 GB           |
+| Inference Device  | CPU            |
+| Optimized Backend | NCNN           |
 
 ---
 
@@ -170,22 +187,22 @@ The source dataset contains approximately:
 
 For the FYP-2 experiment, the dataset was filtered to three Pakistani grocery products.
 
-| Class ID | Product |
-|---:|---|
-| 0 | LU Candi Biscuit |
-| 1 | LU Prince Biscuit |
-| 2 | Peek Freans Sooper Biscuit |
+| Class ID | Product                    |
+| -------: | -------------------------- |
+|        0 | LU Candi Biscuit           |
+|        1 | LU Prince Biscuit          |
+|        2 | Peek Freans Sooper Biscuit |
 
 ---
 
 ## Initial Filtered Dataset
 
-| Split | Images |
-|---|---:|
-| Training | 1,139 |
-| Validation | 334 |
-| Testing | 153 |
-| Total | 1,626 |
+| Split      | Images |
+| ---------- | -----: |
+| Training   |  1,139 |
+| Validation |    334 |
+| Testing    |    153 |
+| Total      |  1,626 |
 
 The exact same train, validation, and test splits were used for YOLOv8n and YOLO11n.
 
@@ -195,15 +212,15 @@ The exact same train, validation, and test splits were used for YOLOv8n and YOLO
 
 Both models were trained using identical settings.
 
-| Parameter | Value |
-|---|---|
-| Epochs | 100 |
-| Image Size | 640 x 640 |
-| Batch Size | 16 |
-| Random Seed | 42 |
-| GPU | NVIDIA GeForce RTX 4060 |
-| Task | Object Detection |
-| Framework | Ultralytics |
+| Parameter   | Value                   |
+| ----------- | ----------------------- |
+| Epochs      | 100                     |
+| Image Size  | 640 x 640               |
+| Batch Size  | 16                      |
+| Random Seed | 42                      |
+| GPU         | NVIDIA GeForce RTX 4060 |
+| Task        | Object Detection        |
+| Framework   | Ultralytics             |
 
 Initial models:
 
@@ -382,39 +399,39 @@ For this project, **mAP@0.50:0.95 is treated as the primary overall detection-pe
 
 ## YOLOv8n
 
-| Metric | Result |
-|---|---:|
-| Precision | 0.999 |
-| Recall | 1.000 |
-| mAP@0.50 | 0.995 |
-| mAP@0.50:0.95 | 0.898 |
+| Metric        | Result |
+| ------------- | -----: |
+| Precision     |  0.999 |
+| Recall        |  1.000 |
+| mAP@0.50      |  0.995 |
+| mAP@0.50:0.95 |  0.898 |
 
 Per-class mAP@0.50:0.95:
 
-| Class | Result |
-|---|---:|
-| Candi | 0.903 |
-| Prince | 0.851 |
-| Sooper | 0.939 |
+| Class  | Result |
+| ------ | -----: |
+| Candi  |  0.903 |
+| Prince |  0.851 |
+| Sooper |  0.939 |
 
 ---
 
 ## YOLO11n
 
-| Metric | Result |
-|---|---:|
-| Precision | 0.999 |
-| Recall | 1.000 |
-| mAP@0.50 | 0.995 |
-| mAP@0.50:0.95 | 0.895 |
+| Metric        | Result |
+| ------------- | -----: |
+| Precision     |  0.999 |
+| Recall        |  1.000 |
+| mAP@0.50      |  0.995 |
+| mAP@0.50:0.95 |  0.895 |
 
 Per-class mAP@0.50:0.95:
 
-| Class | Result |
-|---|---:|
-| Candi | 0.896 |
-| Prince | 0.858 |
-| Sooper | 0.932 |
+| Class  | Result |
+| ------ | -----: |
+| Candi  |  0.896 |
+| Prince |  0.858 |
+| Sooper |  0.932 |
 
 ---
 
@@ -428,20 +445,20 @@ The original held-out test set contained:
 
 ## Overall Results
 
-| Metric | YOLOv8n | YOLO11n |
-|---|---:|---:|
-| Precision | 0.998 | 0.998 |
-| Recall | 1.000 | 1.000 |
-| mAP@0.50 | 0.995 | 0.995 |
-| mAP@0.50:0.95 | **0.899** | 0.890 |
+| Metric        |   YOLOv8n | YOLO11n |
+| ------------- | --------: | ------: |
+| Precision     |     0.998 |   0.998 |
+| Recall        |     1.000 |   1.000 |
+| mAP@0.50      |     0.995 |   0.995 |
+| mAP@0.50:0.95 | **0.899** |   0.890 |
 
 ## Per-Class mAP@0.50:0.95
 
-| Class | YOLOv8n | YOLO11n |
-|---|---:|---:|
-| Candi | **0.891** | 0.872 |
-| Prince | **0.851** | 0.849 |
-| Sooper | **0.955** | 0.948 |
+| Class  |   YOLOv8n | YOLO11n |
+| ------ | --------: | ------: |
+| Candi  | **0.891** |   0.872 |
+| Prince | **0.851** |   0.849 |
+| Sooper | **0.955** |   0.948 |
 
 YOLOv8n achieved slightly higher initial test accuracy.
 
@@ -449,10 +466,10 @@ YOLOv8n achieved slightly higher initial test accuracy.
 
 # Model Complexity
 
-| Parameter | YOLOv8n | YOLO11n |
-|---|---:|---:|
+| Parameter  |   YOLOv8n |       YOLO11n |
+| ---------- | --------: | ------------: |
 | Parameters | 3,006,233 | **2,582,737** |
-| GFLOPs | 8.1 | **6.4** |
+| GFLOPs     |       8.1 |       **6.4** |
 
 YOLO11n is smaller in both parameter count and computational complexity.
 
@@ -462,12 +479,12 @@ YOLO11n is smaller in both parameter count and computational complexity.
 
 Both original `.pt` models were benchmarked on the same 153 images.
 
-| Metric | YOLOv8n | YOLO11n |
-|---|---:|---:|
+| Metric            |       YOLOv8n |   YOLO11n |
+| ----------------- | ------------: | --------: |
 | Average Inference | **530.88 ms** | 556.41 ms |
-| Inference FPS | **1.88** | 1.80 |
-| End-to-End FPS | **1.84** | 1.76 |
-| Total Time | **83.16 s** | 86.89 s |
+| Inference FPS     |      **1.88** |      1.80 |
+| End-to-End FPS    |      **1.84** |      1.76 |
+| Total Time        |   **83.16 s** |   86.89 s |
 
 Native PyTorch inference was relatively slow on the Raspberry Pi CPU.
 
@@ -477,15 +494,15 @@ Native PyTorch inference was relatively slow on the Raspberry Pi CPU.
 
 Both models were exported to NCNN.
 
-| Metric | YOLOv8n NCNN | YOLO11n NCNN |
-|---|---:|---:|
-| Preprocess | 9.73 ms | **9.39 ms** |
-| Inference | 194.41 ms | **112.75 ms** |
-| Postprocess | 1.94 ms | **1.64 ms** |
-| Pipeline Latency | 206.09 ms | **123.77 ms** |
-| Inference FPS | 5.14 | **8.87** |
-| End-to-End FPS | 4.81 | **7.96** |
-| Total Time | 31.82 s | **19.21 s** |
+| Metric           | YOLOv8n NCNN |  YOLO11n NCNN |
+| ---------------- | -----------: | ------------: |
+| Preprocess       |      9.73 ms |   **9.39 ms** |
+| Inference        |    194.41 ms | **112.75 ms** |
+| Postprocess      |      1.94 ms |   **1.64 ms** |
+| Pipeline Latency |    206.09 ms | **123.77 ms** |
+| Inference FPS    |         5.14 |      **8.87** |
+| End-to-End FPS   |         4.81 |      **7.96** |
+| Total Time       |      31.82 s |   **19.21 s** |
 
 NCNN produced a major performance improvement over native PyTorch inference.
 
@@ -594,12 +611,12 @@ Random objects  -> background
 
 The new training set contained:
 
-| Category | Images |
-|---|---:|
-| Original target-product training images | 1,139 |
-| Non-target grocery negatives | 300 |
-| Person/background negatives | 87 |
-| **Total training images** | **1,526** |
+| Category                                |    Images |
+| --------------------------------------- | --------: |
+| Original target-product training images |     1,139 |
+| Non-target grocery negatives            |       300 |
+| Person/background negatives             |        87 |
+| **Total training images**               | **1,526** |
 
 The original validation and test sets were retained.
 
@@ -624,11 +641,11 @@ A new mixed evaluation dataset was therefore created.
 
 It contained:
 
-| Type | Images |
-|---|---:|
-| Target-product test images | 153 |
-| Unseen negative/background images | 100 |
-| **Total** | **253** |
+| Type                              |  Images |
+| --------------------------------- | ------: |
+| Target-product test images        |     153 |
+| Unseen negative/background images |     100 |
+| **Total**                         | **253** |
 
 The 100 negative images were selected from the original Roboflow test split and contained none of:
 
@@ -651,12 +668,12 @@ This allows the evaluation to measure both:
 
 ## Overall Comparison
 
-| Metric | YOLOv8n + Negatives | YOLO11n + Negatives |
-|---|---:|---:|
-| Precision | 0.998 | 0.998 |
-| Recall | 1.000 | 1.000 |
-| mAP@0.50 | 0.995 | 0.995 |
-| mAP@0.50:0.95 | **0.892** | **0.892** |
+| Metric        | YOLOv8n + Negatives | YOLO11n + Negatives |
+| ------------- | ------------------: | ------------------: |
+| Precision     |               0.998 |               0.998 |
+| Recall        |               1.000 |               1.000 |
+| mAP@0.50      |               0.995 |               0.995 |
+| mAP@0.50:0.95 |           **0.892** |           **0.892** |
 
 Both models achieved essentially identical overall detection performance on the final mixed evaluation set.
 
@@ -664,11 +681,11 @@ Both models achieved essentially identical overall detection performance on the 
 
 ## Per-Class mAP@0.50:0.95
 
-| Class | YOLOv8n | YOLO11n |
-|---|---:|---:|
-| Candi | **0.887** | 0.879 |
-| Prince | 0.845 | **0.848** |
-| Sooper | 0.945 | **0.950** |
+| Class  |   YOLOv8n |   YOLO11n |
+| ------ | --------: | --------: |
+| Candi  | **0.887** |     0.879 |
+| Prince |     0.845 | **0.848** |
+| Sooper |     0.945 | **0.950** |
 
 YOLOv8n performed slightly better on Candi.
 
@@ -700,15 +717,15 @@ The negative-sample experiment therefore improved the practical behavior of the 
 
 The negative-trained models were benchmarked again using the same 153 test images.
 
-| Metric | YOLOv8n PyTorch | YOLO11n PyTorch |
-|---|---:|---:|
-| Preprocess | 9.34 ms | **9.02 ms** |
-| Inference | **546.67 ms** | 564.61 ms |
-| Postprocess | 1.24 ms | 1.25 ms |
-| Pipeline Latency | **557.25 ms** | 574.88 ms |
-| Inference FPS | **1.83** | 1.77 |
-| End-to-End FPS | **1.79** | 1.73 |
-| Total Time | **85.52 s** | 88.23 s |
+| Metric           | YOLOv8n PyTorch | YOLO11n PyTorch |
+| ---------------- | --------------: | --------------: |
+| Preprocess       |         9.34 ms |     **9.02 ms** |
+| Inference        |   **546.67 ms** |       564.61 ms |
+| Postprocess      |         1.24 ms |         1.25 ms |
+| Pipeline Latency |   **557.25 ms** |       574.88 ms |
+| Inference FPS    |        **1.83** |            1.77 |
+| End-to-End FPS   |        **1.79** |            1.73 |
+| Total Time       |     **85.52 s** |         88.23 s |
 
 Native PyTorch inference remained too slow for ideal real-time edge deployment.
 
@@ -718,15 +735,15 @@ Native PyTorch inference remained too slow for ideal real-time edge deployment.
 
 The negative-trained models were exported to NCNN and benchmarked again.
 
-| Metric | YOLOv8n NCNN | YOLO11n NCNN |
-|---|---:|---:|
-| Preprocess | **7.93 ms** | 7.98 ms |
-| Inference | 160.02 ms | **154.66 ms** |
-| Postprocess | 1.41 ms | 1.41 ms |
-| Pipeline Latency | 169.36 ms | **164.06 ms** |
-| Inference FPS | 6.25 | **6.47** |
-| End-to-End FPS | 5.84 | **6.03** |
-| Total Time | 26.18 s | **25.36 s** |
+| Metric           | YOLOv8n NCNN |  YOLO11n NCNN |
+| ---------------- | -----------: | ------------: |
+| Preprocess       |  **7.93 ms** |       7.98 ms |
+| Inference        |    160.02 ms | **154.66 ms** |
+| Postprocess      |      1.41 ms |       1.41 ms |
+| Pipeline Latency |    169.36 ms | **164.06 ms** |
+| Inference FPS    |         6.25 |      **6.47** |
+| End-to-End FPS   |         5.84 |      **6.03** |
+| Total Time       |      26.18 s |   **25.36 s** |
 
 The final NCNN models achieved very similar Raspberry Pi performance.
 
@@ -738,17 +755,17 @@ YOLO11n retained a small speed advantage.
 
 ## YOLOv8n
 
-| Backend | Inference | Inference FPS |
-|---|---:|---:|
-| PyTorch | 546.67 ms | 1.83 |
-| NCNN | **160.02 ms** | **6.25** |
+| Backend |     Inference | Inference FPS |
+| ------- | ------------: | ------------: |
+| PyTorch |     546.67 ms |          1.83 |
+| NCNN    | **160.02 ms** |      **6.25** |
 
 ## YOLO11n
 
-| Backend | Inference | Inference FPS |
-|---|---:|---:|
-| PyTorch | 564.61 ms | 1.77 |
-| NCNN | **154.66 ms** | **6.47** |
+| Backend |     Inference | Inference FPS |
+| ------- | ------------: | ------------: |
+| PyTorch |     564.61 ms |          1.77 |
+| NCNN    | **154.66 ms** |      **6.47** |
 
 NCNN substantially improved Raspberry Pi inference performance for both models.
 
@@ -756,17 +773,17 @@ NCNN substantially improved Raspberry Pi inference performance for both models.
 
 # Final Engineering Comparison
 
-| Category | YOLOv8n | YOLO11n |
-|---|---:|---:|
-| Precision | 99.8% | 99.8% |
-| Recall | 100% | 100% |
-| mAP@0.50 | 99.5% | 99.5% |
-| mAP@0.50:0.95 | **89.2%** | **89.2%** |
-| Parameters | 3.01 M | **2.58 M** |
-| GFLOPs | 8.1 | **6.4** |
-| Pi 5 NCNN Inference | 160.02 ms | **154.66 ms** |
-| Pi 5 NCNN Inference FPS | 6.25 | **6.47** |
-| Pi 5 NCNN End-to-End FPS | 5.84 | **6.03** |
+| Category                 |   YOLOv8n |       YOLO11n |
+| ------------------------ | --------: | ------------: |
+| Precision                |     99.8% |         99.8% |
+| Recall                   |      100% |          100% |
+| mAP@0.50                 |     99.5% |         99.5% |
+| mAP@0.50:0.95            | **89.2%** |     **89.2%** |
+| Parameters               |    3.01 M |    **2.58 M** |
+| GFLOPs                   |       8.1 |       **6.4** |
+| Pi 5 NCNN Inference      | 160.02 ms | **154.66 ms** |
+| Pi 5 NCNN Inference FPS  |      6.25 |      **6.47** |
+| Pi 5 NCNN End-to-End FPS |      5.84 |      **6.03** |
 
 The two models currently provide essentially equal quantitative detection accuracy.
 
@@ -832,61 +849,24 @@ imgsz=640
 
 ---
 
-# Repository Structure
-
-Generated datasets, model weights, benchmark output, virtual environments, and archives are excluded from Git.
-
-The repository primarily contains the reproducible processing and evaluation pipeline.
-
-```text
-fyp-grocery-detection/
-|
-├── scripts/
-│   ├── filter_dataset.py
-│   ├── add_negatives.py
-│   ├── create_final_evaluation.py
-│   └── predict.py
-|
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
-
-Large generated files such as:
-
-```text
-dataset/
-filtered_dataset/
-filtered_dataset_with_negatives/
-final_evaluation/
-runs/
-results/
-*.pt
-*_ncnn_model/
-```
-
-are excluded from normal Git history.
-
----
-
 # Evaluation Summary
 
-| Evaluation Requirement | Status |
-|---|---|
-| Model training | Completed |
-| Validation | Completed |
-| Held-out testing | Completed |
-| Precision measurement | Completed |
-| Recall measurement | Completed |
-| mAP@0.50 | Completed |
-| mAP@0.50:0.95 | Completed |
-| Per-class evaluation | Completed |
+| Evaluation Requirement         | Status    |
+| ------------------------------ | --------- |
+| Model training                 | Completed |
+| Validation                     | Completed |
+| Held-out testing               | Completed |
+| Precision measurement          | Completed |
+| Recall measurement             | Completed |
+| mAP@0.50                       | Completed |
+| mAP@0.50:0.95                  | Completed |
+| Per-class evaluation           | Completed |
 | Background/negative evaluation | Completed |
-| Live-camera inference | Completed |
-| Raspberry Pi 5 deployment | Completed |
-| PyTorch benchmark | Completed |
-| NCNN benchmark | Completed |
-| YOLOv8n vs YOLO11n comparison | Completed |
+| Live-camera inference          | Completed |
+| Raspberry Pi 5 deployment      | Completed |
+| PyTorch benchmark              | Completed |
+| NCNN benchmark                 | Completed |
+| YOLOv8n vs YOLO11n comparison  | Completed |
 
 ---
 
