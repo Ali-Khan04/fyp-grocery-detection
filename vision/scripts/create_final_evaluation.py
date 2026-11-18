@@ -1,19 +1,25 @@
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+VISION_DIR = PROJECT_ROOT / 'vision'
+DATASETS_DIR = VISION_DIR / 'datasets'
+MODELS_DIR = VISION_DIR / 'models'
+EVALUATION_DIR = VISION_DIR / 'evaluation'
 import shutil
 import random
 
 
 
 # our main dataset with 3 target classes
-POSITIVE_DATASET = Path("filtered_dataset")
+POSITIVE_DATASET = DATASETS_DIR / "filtered_dataset"
 
 # Original 25-class Roboflow dataset
 ORIGINAL_DATASET = Path(
-    "dataset/Grocery Dataset.v4-raw-images.yolov8"
+    DATASETS_DIR / "dataset" / "Grocery Dataset.v4-raw-images.yolov8"
 )
 
 # New evaluation dataset
-OUTPUT = Path("final_evaluation")
+OUTPUT = EVALUATION_DIR / "final_evaluation"
 
 # Original class IDs
 TARGET_CLASSES = {

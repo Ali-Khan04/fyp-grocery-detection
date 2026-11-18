@@ -1,21 +1,27 @@
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+VISION_DIR = PROJECT_ROOT / 'vision'
+DATASETS_DIR = VISION_DIR / 'datasets'
+MODELS_DIR = VISION_DIR / 'models'
+EVALUATION_DIR = VISION_DIR / 'evaluation'
 import shutil
 import random
 
 
 # our main dataset with 3 target classes
-BASE_DATASET = Path("filtered_dataset")
+BASE_DATASET = DATASETS_DIR / "filtered_dataset"
 
 # Original roboflow dataset with 25 classes
 ORIGINAL_DATASET = Path(
-    "dataset/Grocery Dataset.v4-raw-images.yolov8"
+    DATASETS_DIR / "dataset" / "Grocery Dataset.v4-raw-images.yolov8"
 )
 
 # negative images dataset of people and backgrounds
-PERSON_NEGATIVES = Path("person_nagtaive_background/images")
+PERSON_NEGATIVES = Path(str(DATASETS_DIR / "person_nagtaive_background" / "images"))
 
 # New improved dataset
-OUTPUT = Path("filtered_dataset_with_negatives")
+OUTPUT = DATASETS_DIR / "filtered_dataset_with_negatives"
 
 TARGET_CLASSES = {
     9,   # Candi

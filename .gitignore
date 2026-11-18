@@ -1,56 +1,35 @@
-# Python virtual environment
-.venv/
-venv/
+cat >> .gitignore <<'EOF'
 
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
+# Nested vision datasets
+**/dataset/
+**/custom_biscuit_dataset/
+**/custom_biscuit_with_negatives/
+**/filtered_dataset/
+**/filtered_dataset_with_negatives/
+**/grocery-real-world-test.yolov8/
+**/FYP-Pakistani-Buiscuits.v1-best_dataset_v1_443images_original_noaugmentation.yolov8/
+**/mobileDataset/
+**/unseenDataset/
+**/person_nagtaive_background/
+**/unlabeled/
 
-# --------------------------------------------------
-# Datasets
-# --------------------------------------------------
-dataset/
-filtered_dataset/
-filtered_dataset_with_negatives/
-final_evaluation/
-person_nagtaive_background/
-unlabeled/
-
-# --------------------------------------------------
-# Trained models / model exports
-# --------------------------------------------------
-*.pt
-*.onnx
-*.engine
-
-weights/
-new-models/
-ncnn-models/
-new-ncnn-models/
-
-# --------------------------------------------------
-# Ultralytics generated output
-# --------------------------------------------------
-runs/
-results/
-
-# --------------------------------------------------
-# Raspberry Pi transfer/testing files
-# --------------------------------------------------
+# Nested training outputs
+**/runs/
+**/results/
+**/weights/
+**/new-models/
+**/ncnn-models/
+**/new-ncnn-models/
+EOF
+# Raspberry Pi test assets
 pi-test/
 
-# --------------------------------------------------
-# Archives
-# --------------------------------------------------
-*.zip
-*.tar.gz
+# Generated final evaluation dataset
+vision/evaluation/final_evaluation/
 
-# --------------------------------------------------
-# Dataset caches
-# --------------------------------------------------
-*.cache
+# Generated detection images
+vision/evaluation/slot_detection_result.jpg
 
-# OS / editor junk
-.DS_Store
-Thumbs.db
+# Model archives
+vision/models/archives/
+*.pt

@@ -1,12 +1,18 @@
 from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+VISION_DIR = PROJECT_ROOT / 'vision'
+DATASETS_DIR = VISION_DIR / 'datasets'
+MODELS_DIR = VISION_DIR / 'models'
+EVALUATION_DIR = VISION_DIR / 'evaluation'
 import shutil
 import yaml
 
 # Original dataset
-SOURCE = Path("dataset/Grocery Dataset.v4-raw-images.yolov8")
+SOURCE = DATASETS_DIR / "dataset" / "Grocery Dataset.v4-raw-images.yolov8"
 
-# New filtered dataset
-OUTPUT = Path("filtered_dataset")
+# New filtered dataset for our 3 target classes
+OUTPUT = DATASETS_DIR / "filtered_dataset"
 
 # old class ID -> new class ID
 CLASS_MAP = {
