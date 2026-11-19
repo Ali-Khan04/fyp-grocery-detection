@@ -8,20 +8,16 @@ const navigation = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white">
-      {/* Announcement bar */}
-      <div className="bg-green-800 px-4 py-2 text-center text-xs font-medium text-white">
-        Free delivery on orders above Rs. 3,000
-      </div>
-
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-6 py-4">
         {/* Logo */}
-        <Link
-          href="/"
-          className="shrink-0 text-2xl font-extrabold tracking-tight text-green-800"
-        >
-          fresh<span className="text-green-500">mart.</span>
+        <Link href="/" className="flex shrink-0 flex-col leading-none">
+          <span className="text-2xl font-extrabold tracking-[0.15em] text-green-800">
+            AURA
+          </span>
+          <span className="mt-1 text-[9px] font-semibold tracking-[0.12em] text-gray-500 uppercase">
+            Autonomous Retail Assistant Robot
+          </span>
         </Link>
-
         {/* Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {navigation.map((item) => (
@@ -72,13 +68,6 @@ export default function Header() {
             <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-green-700 text-[10px] font-bold text-white">
               0
             </span>
-          </Link>
-
-          <Link
-            href="/login"
-            className="hidden rounded-full bg-green-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-900 sm:block"
-          >
-            Sign In
           </Link>
         </div>
       </div>

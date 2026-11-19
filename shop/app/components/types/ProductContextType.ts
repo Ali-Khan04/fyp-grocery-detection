@@ -9,6 +9,10 @@ export type CartAction = {
 };
 
 export type ProductContextType = {
-  product: ProductConfig[];
+  shop: ShopState;
   dispatch: React.Dispatch<CartAction>;
+};
+export type ShopState = {
+  product: ProductConfig[];
+  cartProdcuts: ProductConfig[];
 };

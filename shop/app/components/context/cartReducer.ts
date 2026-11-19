@@ -1,12 +1,15 @@
-import { CartAction, ProductConfig } from "../types/ProductContextType";
+import { CartAction, ShopState } from "../types/ProductContextType";
 
 export const cartReducer = (
-  state: ProductConfig[],
+  state: ShopState,
   action: CartAction,
-): ProductConfig[] => {
+): ShopState => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return [...state, action.payload];
+      return {
+        ...state,
+        cartProdcuts: [...state.cartProdcuts, action.payload],
+      };
     default:
       return state;
   }
