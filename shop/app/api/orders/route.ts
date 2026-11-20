@@ -27,14 +27,26 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ items }),
+      body: JSON.stringify({
+        items: items.map((item) => ({
+          id: String(item.id),
+          title: String(item.title),
+        })),
+      }),
       cache: "no-store",
     });
 
     if (!response.ok) {
+      const errorDetails = await response.json();
+
+      console.error("Pi API validation error:", errorDetails);
+
       return NextResponse.json(
-        { error: "Raspberry Pi could not process the order." },
-        { status: 502 },
+        {
+          error: "Raspberry Pi rejected the order.",
+          details: errorDetails,
+        },
+        { status: response.status },
       );
     }
 
