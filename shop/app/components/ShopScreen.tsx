@@ -65,19 +65,21 @@ export default function ShopScreen() {
             className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
           >
             {/* Product Image Placeholder */}
-            <div className="mb-5 flex aspect-square items-center justify-center rounded-xl bg-green-50">
-              <span className="text-5xl text-green-700">🛒</span>
+            <div className="mb-5 flex aspect-square items-center justify-center rounded-xl bg-green-50 transition-colors duration-200 group-hover:bg-green-100">
+              <span className="text-5xl text-green-700 transition-transform duration-200 group-hover:scale-110">
+                🛒
+              </span>
             </div>
 
             {/* Product Details */}
             <div className="flex flex-1 flex-col">
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-green-800">
                 {product.title}
               </h3>
 
               <div className="mt-auto pt-5">
                 <Button
-                  className="w-full rounded-lg bg-green-800 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-900"
+                  className="w-full rounded-lg bg-green-800 px-4 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-green-900 hover:shadow-md active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 cursor-pointer"
                   onClick={() =>
                     dispatch({
                       type: "ADD_TO_CART",

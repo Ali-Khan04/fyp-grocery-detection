@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-
     const { items } = body;
 
     if (!Array.isArray(items) || items.length === 0) {
@@ -24,9 +23,7 @@ export async function POST(request: Request) {
 
     const response = await fetch(`${piUrl}/orders`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         items: items.map((item) => ({
           id: String(item.id),
@@ -36,26 +33,16 @@ export async function POST(request: Request) {
       cache: "no-store",
     });
 
+    const result = await response.json();
+
     if (!response.ok) {
-      const errorDetails = await response.json();
-
-      console.error("Pi API validation error:", errorDetails);
-
       return NextResponse.json(
-        {
-          error: "Raspberry Pi rejected the order.",
-          details: errorDetails,
-        },
+        { error: "Raspberry Pi rejected the order.", details: result },
         { status: response.status },
       );
     }
 
-    const result = await response.json();
-
-    return NextResponse.json({
-      message: "Order successfully sent to the robot.",
-      result,
-    });
+    return NextResponse.json(result);
   } catch (error) {
     console.error("Order API error:", error);
 

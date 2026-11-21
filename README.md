@@ -1,4 +1,4 @@
-##Computer vision pipeline for the autonomous retail robot.
+Computer vision pipeline for the autonomous retail robot.
 
 ## Directory Structure
 
